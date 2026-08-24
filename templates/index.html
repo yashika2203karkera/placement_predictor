@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Placement Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>🎓 Campus Placement Predictor</h2>
+        <p class="subtitle">Fill in student academic details to predict placement status</p>
+
+        <form action="/" method="POST">
+            <div class="form-grid">
+
+                <!-- Gender -->
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+
+                <!-- 10th Percentage -->
+                <div class="form-group">
+                    <label for="ssc_p">10th Grade Percentage (%)</label>
+                    <input type="number" step="0.01" min="0" max="100" id="ssc_p" name="ssc_p" placeholder="e.g. 75.5"
+                        required>
+                </div>
+
+                <!-- 10th Board -->
+                <div class="form-group">
+                    <label for="ssc_b">10th Board</label>
+                    <select id="ssc_b" name="ssc_b" required>
+                        <option value="0">Central</option>
+                        <option value="1">Others</option>
+                    </select>
+                </div>
+
+                <!-- 12th Percentage -->
+                <div class="form-group">
+                    <label for="hsc_p">12th Grade Percentage (%)</label>
+                    <input type="number" step="0.01" min="0" max="100" id="hsc_p" name="hsc_p" placeholder="e.g. 80.0"
+                        required>
+                </div>
+
+                <!-- 12th Board -->
+                <div class="form-group">
+                    <label for="hsc_b">12th Board</label>
+                    <select id="hsc_b" name="hsc_b" required>
+                        <option value="0">Central</option>
+                        <option value="1">Others</option>
+                    </select>
+                </div>
+
+                <!-- 12th Stream (hsc_s) -->
+                <div class="form-group">
+                    <label for="hsc_s">12th Stream</label>
+                    <select id="hsc_s" name="hsc_s" required>
+                        <option value="1">Commerce</option>
+                        <option value="2">Science</option>
+                        <option value="0">Arts</option>
+                    </select>
+                </div>
+
+                <!-- Degree Percentage -->
+                <div class="form-group">
+                    <label for="degree_p">Degree Percentage (%)</label>
+                    <input type="number" step="0.01" min="0" max="100" id="degree_p" name="degree_p"
+                        placeholder="e.g. 70.2" required>
+                </div>
+
+                <!-- Degree Field (degree_t) -->
+                <div class="form-group">
+                    <label for="degree_t">Degree Stream</label>
+                    <select id="degree_t" name="degree_t" required>
+                        <option value="2">Sci & Tech</option>
+                        <option value="0">Comm & Mgmt</option>
+                        <option value="1">Others</option>
+                    </select>
+                </div>
+
+                <!-- Work Experience -->
+                <div class="form-group">
+                    <label for="workex">Work Experience</label>
+                    <select id="workex" name="workex" required>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <!-- E-Test Percentage -->
+                <div class="form-group">
+                    <label for="etest_p">E-Test Percentage (%)</label>
+                    <input type="number" step="0.01" min="0" max="100" id="etest_p" name="etest_p"
+                        placeholder="e.g. 65.0" required>
+                </div>
+
+                <!-- Specialisation -->
+                <div class="form-group">
+                    <label for="specialisation">MBA Specialization</label>
+                    <select id="specialisation" name="specialisation" required>
+                        <option value="0">Mkt & Fin</option>
+                        <option value="1">Mkt & HR</option>
+                    </select>
+                </div>
+
+                <!-- MBA Percentage -->
+                <div class="form-group">
+                    <label for="mba_p">MBA Percentage (%)</label>
+                    <input type="number" step="0.01" min="0" max="100" id="mba_p" name="mba_p" placeholder="e.g. 68.4"
+                        required>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn-submit">Predict Placement Status</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result-card">
+            <h3>Prediction Result:</h3>
+            <p class="prediction-text">{{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>
